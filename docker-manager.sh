@@ -57,7 +57,7 @@ start_all() {
     print_status "Building and starting all services..."
     docker compose up --build -d
     print_status "All services started successfully!"
-    print_status "Frontend: http://localhost:3000"
+    print_status "Frontend: http://localhost"
     print_status "Admin: http://localhost:3001"
     print_status "Backend API: http://localhost:8000"
 }
