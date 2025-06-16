@@ -1,0 +1,86 @@
+.slider-item {
+  // padding: 0 15px;
+  position: relative;
+  // z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  // justify-content: space-between;
+  cursor: pointer;  .title-card {
+    position: relative;
+    width: 100%;
+    // height: 250px;
+    
+    .wrapper-play-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background-color: rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      // color: #f14c47;
+      
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+
+      svg {
+        width: 25px;
+        height: 25px;
+        fill: white;
+      }
+    }
+    
+    &:hover {
+      .wrapper-play-icon {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+    .slider-focus {
+      width: 100%;
+      height: fit-content;
+      border-radius: 5px;
+      outline: none;
+      aspect-ratio: 170 / 250;
+      img {
+        border-radius: 5px;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+  }    .slider-movie-title {
+    color: rgb(209 213 219);
+    font-size: 1rem;
+    line-height: 1.4;
+    font-weight: 500;
+    text-align: center;
+    max-width: 100%;
+    min-height: 2.8rem; // Đảm bảo có đủ không gian cho 2 dòng (1rem * 1.4 * 2 = 2.8rem)
+    margin: 0; // Reset margin
+    
+    // Cho phép text xuống dòng
+    white-space: normal;
+    word-wrap: break-word;
+    word-break: break-word;
+    
+    // Limit to 2 lines with ellipsis
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2; // Standard property for compatibility
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

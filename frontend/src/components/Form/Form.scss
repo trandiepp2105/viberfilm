@@ -1,0 +1,109 @@
+.form {
+  width: 100%;
+  height: 80%;
+  background-color: rgba(0, 0, 0, 0.8);
+  border: none;
+  border-radius: 10px;
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  .form-title {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+    text-align: center;
+    position: relative;
+
+    .back-link {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      outline: none;
+    }
+  }
+  .form-description {
+    color: rgb(148, 148, 148);
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .form-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .form-components {
+      margin-bottom: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .submit-btn {
+      border: none;
+      outline: none;
+      border-radius: 5px;
+      padding: 15px 0;
+      background-color: #c00311;
+      margin-bottom: 20px;
+      cursor: pointer;
+      &:hover {
+        background-color: #ea0505;
+      }
+    }
+
+    .forgot-password-btn {
+      border: none;
+      outline: none;
+      background-color: transparent;
+      color: rgb(148, 148, 148);
+      cursor: pointer;
+      width: fit-content;
+      align-self: flex-end;
+      color: #f9636d;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .remember-user {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: rgb(192, 191, 191);
+      cursor: pointer;
+
+      input,
+      label {
+        cursor: pointer;
+      }
+    }
+  }
+  .form-footer {
+    color: rgb(148, 148, 148);
+
+    .link-btn {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      border: none;
+      outline: none;
+      background-color: transparent;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

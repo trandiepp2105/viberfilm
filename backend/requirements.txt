@@ -1,0 +1,16 @@
+Django==5.1.4
+mysqlclient
+djangorestframework
+django-cors-headers
+djangorestframework-simplejwt
+Pillow>=8.0.0
+redis
+drf-yasg
+django-redis
+hashids
+django-extensions
+Werkzeug
+pyOpenSSL
+mysql-connector-python
+elasticsearch-dsl >= 8.0.0
+pandas

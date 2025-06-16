@@ -1,0 +1,133 @@
+.episode-list {
+  width: 100%;
+  margin-top: 32px;
+  color: #fff;
+  padding: 0 4%;
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    padding: 0 8px;
+  }
+  &__season-dropdown {
+    position: relative;
+    display: inline-block;
+    z-index: 10;
+  }
+  &__season {
+    font-size: 1.45rem;
+    font-weight: 600;
+    color: #1de9b6;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: color 0.2s;
+    &.open {
+      color: #1de9b6;
+    }
+    .fa-caret-down {
+      font-size: 1.3em;
+      margin-right: 8px;
+      transition: transform 0.2s;
+      color: #1de9b6;
+      display: inline-block;
+    }
+    &.open .fa-caret-down {
+      transform: rotate(-180deg);
+    }
+  }
+  &__season-list {
+    position: absolute;
+    top: 120%;
+    left: 0;
+    min-width: 480px;
+    background: #23242a;
+    border-radius: 6px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    padding: 12px 0;
+    margin-top: 6px;
+    z-index: 100;
+    animation: fadeIn 0.18s;
+  }
+  &__season-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 28px 14px 24px;
+    font-size: 1.13rem;
+    color: #e0e0e0;
+    cursor: pointer;
+    transition: background 0.18s, color 0.18s;
+    border-radius: 4px;
+    &:hover,
+    &.active {
+      background: #35363c;
+      color: #1de9b6;
+    }
+  }
+  &__season-title {
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 340px;
+  }
+  &__season-epcount {
+    font-size: 1rem;
+    color: #b3b3b3;
+    margin-left: 18px;
+    font-weight: 400;
+    white-space: nowrap;
+  }
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    font-size: 1.08rem;
+    color: #b3b3b3;
+    .fa {
+      margin-right: 7px;
+    }
+  }
+  &__sort,
+  &__options {
+    cursor: pointer;
+    user-select: none;
+    &:hover {
+      color: #fff;
+    }
+  }
+  &__grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px 24px;
+    justify-content: flex-start;
+  }
+  &__item {
+    flex: 0 0 calc(25% - 18px); // 4 item trên 1 hàng, trừ đi gap
+    max-width: calc(25% - 18px);
+    box-sizing: border-box;
+    display: flex;
+  }
+}
+
+@media (max-width: 1200px) {
+  .episode-list__item {
+    flex: 0 0 calc(33.333% - 16px);
+    max-width: calc(33.333% - 16px);
+  }
+}
+@media (max-width: 900px) {
+  .episode-list__item {
+    flex: 0 0 calc(50% - 12px);
+    max-width: calc(50% - 12px);
+  }
+}
+@media (max-width: 600px) {
+  .episode-list__item {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}

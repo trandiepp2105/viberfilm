@@ -1,0 +1,48 @@
+.page-navi {
+    color: black;
+    position: relative;
+    margin-top: 40px;
+
+    .number-of-page {
+        position: absolute;
+        width: fit-content;
+        top: 0;
+        // padding-top: 40px;
+        padding-left: 60px;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .switch-page-list {
+        display: flex;
+        list-style: none;
+        justify-content: center;
+        height: 20px;
+        // margin-top: 40px;
+        .switch-page-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 20px;
+            background-color: white;
+            border-radius: 30%;
+            font-size: 15px;
+            font-weight: bold;
+            margin: 0 5px;
+        }
+
+        .disabled {
+            color: #D3D3D3;
+            cursor: not-allowed;
+        }
+
+        .page-current {
+            background-color: #09CBE0;
+            color: white;
+        }
+
+        .switch-icon {
+            width: 20px;
+        }
+    }
+}

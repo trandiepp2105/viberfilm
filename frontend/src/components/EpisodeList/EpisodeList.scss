@@ -1,0 +1,215 @@
+// EpisodeList Component Styles
+.episode-list {
+  width: 92%;
+  margin: 2rem 4%;
+  padding: 1.5rem;
+  background: rgba(20, 20, 20, 0.95);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  max-height: calc(100vh - 100px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; // Hide overflow on the main container
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    flex-shrink: 0; // Prevent header from shrinking
+
+    h3 {
+      color: #ffffff;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 0;
+    }
+  }
+
+  &__season-selector {
+    display: flex;
+    gap: 0.5rem;
+
+    .season-btn {
+      padding: 0.5rem 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 6px;
+      color: #ffffff;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.2);
+        border-color: rgba(29, 233, 182, 0.5);
+      }
+
+      &.active {
+        background: #1de9b6;
+        border-color: #1de9b6;
+        color: #000000;
+        font-weight: 600;
+      }
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    gap: 0.8rem;
+    flex: 1; // Take remaining space
+    overflow-y: auto; // Enable vertical scrolling
+    overflow-x: hidden; // Hide horizontal scrollbar
+    padding-right: 8px; // Add space for scrollbar
+    margin-right: -8px; // Offset padding to align with container
+    
+    // Custom scrollbar styling
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    &::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 3px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background: rgba(29, 233, 182, 0.6);
+      border-radius: 3px;
+      
+      &:hover {
+        background: rgba(29, 233, 182, 0.8);
+      }
+    }
+    
+    // Firefox scrollbar styling
+    scrollbar-width: thin;
+    scrollbar-color: rgba(29, 233, 182, 0.6) rgba(255, 255, 255, 0.1);
+    
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+      gap: 0.6rem;
+      padding-right: 4px;
+      margin-right: -4px;
+    }
+  }
+
+  &__empty {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.1rem;
+    flex: 1; // Take remaining space when empty
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+// Episode Number Box Styles - Simple Grid Layout
+.episode-number-box {
+  width: 60px;
+  height: 60px;
+  background: rgba(30, 30, 30, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  // Hover state - style như item bên phải (màu hồng/đỏ nhạt)
+  &:hover {
+    background: linear-gradient(135deg, rgba(231, 76, 60, 0.3), rgba(192, 57, 43, 0.3));
+    border-color: rgba(231, 76, 60, 0.6);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(231, 76, 60, 0.3);
+  }
+
+  // Active state - màu đỏ như item bên trái
+  &.active {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    border-color: #e74c3c;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(231, 76, 60, 0.4);
+  }
+
+  // Active + Hover combination
+  &.active:hover {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(231, 76, 60, 0.7);
+    border-color: #e74c3c;
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  @media (max-width: 768px) {
+    width: 50px;
+    height: 50px;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 480px) {
+    width: 45px;
+    height: 45px;
+    font-size: 0.8rem;
+  }
+}
+
+// Responsive Design
+@media (max-width: 1024px) {
+  .episode-list {
+    padding: 1rem;
+    margin: 1.5rem 4%;
+    max-height: calc(100vh - 80px); // Slightly smaller on tablets
+
+    &__header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+
+      h3 {
+        font-size: 1.3rem;
+      }
+    }
+
+    &__season-selector {
+      width: 100%;
+      justify-content: flex-start;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+
+      .season-btn {
+        flex-shrink: 0;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.85rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .episode-list {
+    padding: 0.8rem;
+    margin: 1rem 4%;
+    max-height: calc(100vh - 60px); // Even smaller on mobile
+
+    &__header h3 {
+      font-size: 1.2rem;
+    }
+
+    &__grid {
+      gap: 0.5rem;
+    }
+  }
+}

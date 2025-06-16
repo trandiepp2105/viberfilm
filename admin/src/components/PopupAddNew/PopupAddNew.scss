@@ -1,0 +1,101 @@
+.popup-overlay {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+
+    .popup-container {
+        width: 450px;
+        height: fit-content;
+        background-color: white;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: black;
+        border: 2px solid #7c7c7c;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 0px 10px 0px rgba(0, 0, 0, 0.5);
+    
+        .popup-header {
+            font-size: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin: 20px auto;
+        }
+        .popup-add-new-content {
+            width: 400px;
+            max-height: 210px;
+            overflow: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transform: translate(-10%);
+            margin-left: 80px;
+            gap: 15px;
+            margin-bottom: 20px;
+    
+            .add-new-directors-box {
+                display: flex;
+                gap: 10px;
+                .add-name {
+                    padding: 5px;
+                    height: 40px;
+                    width: 250px;
+                    border: 1px solid #7c7c7c;
+                }
+                .add-subtract-button-container {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: fit-content;
+                    .add-subtract-btn {
+                        width: 30px;
+                        height: 30px;
+                        background-color: #2CC1FC;
+                        border-radius: 50%;
+                        color: white;
+                        font-size: 20px;
+                        font-weight: 600;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                }
+            }
+        }
+        .button-container {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            .cancel-btn {
+                width: 100px;
+                height: 30px;
+                background-color: red;
+                color: white;
+                border-radius: 10px;
+                border: 1px solid black;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .add-new-option-btn {
+                width: 100px;
+                height: 30px;
+                background-color: #2CC1FC;
+                color: white;
+                border-radius: 10px;
+                border: 1px solid black;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+}

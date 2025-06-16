@@ -1,0 +1,30 @@
+.allow-format-area {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: auto;
+    height: fit-content;
+    .allow-format {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        padding: 15px;
+    }
+
+    .allow-format-title {
+        margin-left: 15px;
+    }
+
+    .allow-format-options {
+        text-transform: uppercase;
+    }
+}
+
+.allow-format-area::before {
+    content: "";
+    width: 100%;
+    height: 1px;
+    background-color: white;
+    margin-right: 10px;
+    position: absolute;
+}

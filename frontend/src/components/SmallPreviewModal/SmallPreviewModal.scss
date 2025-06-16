@@ -1,0 +1,141 @@
+@keyframes scaleUp {
+  0% {
+    // transform: scale(0); /* Nhỏ nhất */
+    opacity: 0;
+  }
+  30% {
+    // transform: scale(0.5); /* Thu nhỏ */
+    opacity: 0;
+  }
+  50% {
+    // transform: scale(1.1); /* Phóng to */
+    opacity: 0.5;
+  }
+  100% {
+    // transform: scale(1); /* Kích thước thực */
+    opacity: 1;
+  }
+}
+
+.small-preview-modal {
+  position: fixed !important;
+
+  z-index: 2000 !important;
+  background-color: #000;
+  border-radius: 10px;
+  animation: scaleUp 0.7s ease-in-out forwards;
+  //   scale: 0.5;
+  visibility: visible; /* Đảm bảo không bị ẩn */
+
+  box-shadow: 0px 0px 3px 0px rgba(217, 208, 208, 0.75);
+  -webkit-box-shadow: 0px 0px 3px 0px rgba(217, 208, 208, 0.75);
+  -moz-box-shadow: 0px 0px 3px 0px rgba(217, 208, 208, 0.75);
+  .image-wrapper {
+    width: 100%;
+    height: fit-content;
+    img {
+      width: 100%;
+      object-fit: cover;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+  }
+
+  .small-preview-modal-content {
+    padding: 20px;
+    .controller {
+      display: flex;
+      gap: 10px;
+      width: 100%;
+      position: relative;
+      height: fit-content;
+      button {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+
+      .like-btn,
+      .add-to-wish-list-btn,
+      .show-detail-btn {
+        background-color: rgba(42, 42, 42, 0.6);
+
+        border: 2px solid hsla(0, 0%, 100%, 0.5);
+        box-sizing: border-box;
+        &:hover {
+          border: 2px solid rgba(255, 255, 255, 0.7) !important;
+          background-color: rgba(245, 239, 239, 0.2) !important;
+        }
+
+        .heart-icon {
+          margin-top: 2px;
+        }
+
+        .comment-icon {
+          margin-top: 2px;
+          width: 30px;
+          height: 30px;
+        }
+      }
+
+      .show-detail-btn {
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+    }
+
+    .preview-meta-data {
+      //   margin: 15px 0;
+      margin-top: 20px;
+      margin-bottom: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      .general-info {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        .maturity-rating {
+          .maturity-number {
+            border: 1px solid hsla(0, 0%, 100%, 0.4);
+            padding: 0.2em 0.4em;
+          }
+        }
+        .duration {
+          font-size: 18px;
+          font-weight: bold;
+          color: rgb(181, 176, 176);
+        }
+        .player-feature-badge {
+          border: 1px solid hsla(0, 0%, 100%, 0.4);
+          border-radius: 2px;
+          padding: 1px 5px;
+        }
+      }
+
+      .tags {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        // margin: 15px 0;
+        .separator {
+          width: 4px;
+          height: 4px;
+          background-color: white;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+}
+
+// .small-preview-modal.show {
+//   //   transform: scale(1);
+//   scale: 1 !important;
+//   visibility: visible;
+// }

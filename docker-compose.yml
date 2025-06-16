@@ -1,0 +1,98 @@
+version: "3.8"
+
+services:
+  frontend:
+    container_name: frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - localnet
+    restart: unless-stopped
+
+  admin:
+    container_name: admin
+    build:
+      context: ./admin
+      dockerfile: Dockerfile
+    ports:
+      - "3001:80"
+    depends_on:
+      - backend
+    networks:
+      - localnet
+    restart: unless-stopped
+
+  backend:
+    container_name: backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    volumes:
+      - ./backend:/backend
+      # - ./certs:/certs
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - redis
+    env_file:
+      - ./.env
+    networks:
+      - localnet
+    # restart: always
+    stdin_open: true
+    tty: true
+    # command: tail -f /dev/null
+  db:
+    image: mysql:8.0
+    container_name: mysql
+    ports:
+      - "3307:3306"
+    env_file:
+      - ./.env
+    # environment:
+    #   MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    #   MYSQL_DATABASE: ${MYSQL_DATABASE}
+    #   MYSQL_USER: ${MYSQL_USER}
+    #   MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+
+    networks:
+      - localnet
+
+  redis:
+    container_name: redis
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - localnet
+  elasticsearch:
+    container_name: elasticsearch
+    image: elasticsearch:8.0.0
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=true
+      - ELASTICSEARCH_HOST=${ELASTICSEARCH_HOST}
+      - ELASTIC_USERNAME=${ELASTIC_USERNAME}
+      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
+    ports:
+      - "9200:9200"
+    networks:
+      - localnet
+volumes:
+  redis-data:
+  db_data:
+
+networks:
+  localnet:
+    driver: bridge

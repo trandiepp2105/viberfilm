@@ -1,0 +1,27 @@
+.form-input {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-width: 1px;
+  border-color: #c00311;
+  border-style: solid;
+  border-radius: 5px;
+  padding: 15px;
+
+  input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: transparent !important;
+    font-size: 16px;
+    color: white;
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+      background-color: transparent !important;
+      color: white !important;
+    }
+  }
+}

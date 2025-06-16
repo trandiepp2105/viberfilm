@@ -1,0 +1,80 @@
+.popular-movie-page {
+  padding-top: calc(68px + 35px);
+
+  .page-header {
+    text-align: center;
+    padding: 2rem 4%;
+    margin-bottom: 1rem;
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #1de9b6, #17c39a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.8);
+      margin: 0;
+    }
+  }
+
+  .loading-container,
+  .error-container,
+  .empty-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
+    text-align: center;
+    color: #ffffff;
+    padding: 2rem;
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    button {
+      padding: 12px 24px;
+      background: #1de9b6;
+      color: #000000;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: #17c39a;
+        transform: translateY(-2px);
+      }
+    }
+  }
+
+  .loading-container {
+    h2 {
+      color: #1de9b6;
+    }
+  }
+
+  .error-container {
+    h2 {
+      color: #e74c3c;
+    }
+  }
+}

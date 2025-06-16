@@ -1,0 +1,55 @@
+.taskbar-container {
+    width: 220px;
+    background-color: white;
+    padding-top: 60px;
+    height: 100%;
+
+    .content-managerment-container {
+        padding-top: 40px;
+    }
+
+    .personal-container {
+        padding-top: 40px;
+    }
+    
+    .task-heading {
+        font-size: 16px;
+        color: #9C8787;
+        padding: 16px;
+        text-align: center;
+    }
+
+    .options-container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .options {
+            padding: 15px 0;
+            padding-left: 50px;
+            width: 100%;
+            display: flex;
+            gap: 10px;
+        }  
+
+        .task-name {
+            font-size: 16px;
+            color: #5259e0;
+        }
+
+        .option-icon {
+            width: 20px;
+        }    
+
+        .active {
+            background-color: rgba(48, 51, 203, 0.6);
+            .task-name {
+                color: white;
+            }
+        }
+    }  
+}
+
+
+

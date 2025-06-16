@@ -1,0 +1,25 @@
+.layout-container {
+    width: 100%;
+    background-color: #E0F5F6;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    user-select: none;
+
+    .navigation-bar {
+        width: fit-content;
+        position: relative;
+        min-height: 100vh;
+        z-index: 3;
+        .logo-container {
+            position: fixed;
+        }
+    }
+
+    .header-container {
+        position: fixed;
+        left: 220px;
+        z-index: 2;
+    }
+}

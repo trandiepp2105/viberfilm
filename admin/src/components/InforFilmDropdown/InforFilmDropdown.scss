@@ -1,0 +1,161 @@
+.dropdown-container {
+    height: fit-content;
+    margin-bottom: 20px;
+    
+    .dropdown-title {
+        margin-bottom: 5px;
+    }
+
+    .dropdown-box {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .option-show {
+            width: 100%;
+            height: 100%;;
+            padding: 10px 20px;
+            gap: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            .selected-option-show {
+                width: fit-content;
+                padding: 10px;
+                display: flex;
+                background-color: #ccc;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+                border-radius: 10px;
+            }
+        }
+    }
+
+    .dropdown-selection {
+        width: 400px;
+        min-height: 50px;
+        margin-left: auto;
+        background-color: white;
+        display: flex;
+        justify-content: right;
+        align-items: center;
+        position: relative;
+
+        .dropdown-img {
+            width: 20px;
+            margin-right: 10px;
+            padding: 15px 0;
+        }
+        
+        .options {
+            position: absolute;
+            z-index: 1;
+            width: 100%;
+            background-color: white;
+            border: 1px solid black;
+            border-radius: 10px;
+            max-height: 245px;
+            border: none;
+            box-shadow: 0 1px 10px 1px rgba(0, 0, 0, 0.5);
+            margin-top: 10px;
+            margin-bottom: 10px;
+            padding: 20px 25px 40px 20px; 
+
+            .search-and-add-new {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                .search-box {
+                    width: 250px;
+                    height: 30px;
+                    border: 2px solid black;
+                    border-radius: 10px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-right: 15px;
+
+                    .dropdown-search {
+                        background-color: transparent;
+                        height: 80%;
+                        outline: none;
+                        border: none;
+                        text-align: left;
+                        &::placeholder {
+                            font-size: 12px;
+                        }
+                    }
+                    .search-icon {
+                        width: 10px;
+                        height: 10px;
+                        margin-right: 10px;
+                    }
+                }
+                .add-new-button {
+                    width: 90px;
+                    height: 30px;
+                    background-color: #2CC1FC;
+                    color: white;
+                    border-radius: 10px;
+                    border: 2px solid black;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    .add-new {
+                        font-size: 10px;
+                        margin-right: 20px
+                    }
+                    .add-new-icon {
+                        width: 10px;
+                    }
+                }
+            }
+
+            .first-letter {
+                width: 100%;
+                height: 35px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: #7c7c7c;
+                .letter {
+                    font-size: 12px;
+                    font-style: bold;
+                    text-transform: uppercase;
+                    padding: 10px;
+                    font-weight: 600;
+                }
+            }
+            .options-frame {
+                width: 100%;
+                max-height: 120px;
+                height: fit-content;
+                overflow-y: auto;
+                background-color: #f3f3f3;
+                border-left: 2px solid black;
+                padding-left: 20px;
+
+                &::-webkit-scrollbar {
+                    appearance: none;
+                    width: 5px;
+                }
+    
+                &::-webkit-scrollbar-thumb {
+                    appearance: none;
+                    background-color: #ccc;
+                    border-radius: 4px;
+                }
+
+                .option {
+                    height: 30px;
+                    display: flex;
+                    align-items: center;
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+}

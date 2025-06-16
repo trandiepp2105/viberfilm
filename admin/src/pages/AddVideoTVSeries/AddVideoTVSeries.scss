@@ -1,0 +1,47 @@
+.main-content-add-video-tv-series {
+    display: flex;
+    flex-direction: row;
+    color: black;
+    user-select: none;
+    position: relative;
+    width: calc(100vw - 220px);
+    margin-top: 60px;
+
+    button {
+        cursor: pointer;
+    }
+    
+    label {
+        cursor: pointer;
+    }
+
+    .upload-video-area {
+        width: 444px;
+        height: 100%;
+        background-color: #020225;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+
+    .img-modal {
+        position: absolute;
+        background-color: rgba(217, 217, 217, 0.7);
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;    
+
+        .thumbnail-preview-full-size {
+            max-width: 720px;
+            max-height: 405px;
+            object-fit: contain;
+            animation: zoomEffect 0.2s forwards ease-out;
+            cursor: crosshair;
+        }
+    }  
+}

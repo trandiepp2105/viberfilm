@@ -1,0 +1,23 @@
+.movie-detail-page {
+    background-color: #181818 !important;
+
+    .wrapper-similar-movies {
+        margin-bottom: 15px;
+        
+        .similar-loading,
+        .no-similar-content {
+            padding: 40px 0;
+            text-align: center;
+            color: #ccc;
+            font-size: 16px;
+        }
+        
+        .similar-loading {
+            opacity: 0.8;
+        }
+        
+        .no-similar-content {
+            opacity: 0.6;
+        }
+    }
+}

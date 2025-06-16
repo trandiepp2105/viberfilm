@@ -1,0 +1,25 @@
+.plus-block {
+    position: relative;
+    width: 50px;
+    height: 50px;
+}
+
+.plus-block::before, .plus-block::after {
+    content: "";
+    position: absolute;
+    background-color: #d6d6d6;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+}
+
+.plus-block::before {
+    width: 10px;
+    height: 100%;
+}
+
+.plus-block::after {
+    width: 100%;
+    height: 10px;
+}

@@ -1,0 +1,99 @@
+.sub-header {
+  .sub-header-wrapper {
+    .genre-selecter {
+      display: flex;
+      align-items: center;
+      flex-grow: 1;
+
+      .parent-genre {
+      }
+
+      .genre-selecter-detail {
+        display: flex;
+        align-items: center;
+        flex-grow: 1;
+
+        .genre-title {
+          font-size: 38px;
+          font-weight: 500;
+          line-height: 38px;
+          margin-right: 15px;
+        }
+
+        .subgenres {
+          margin: 0 30px;
+          position: relative;
+          cursor: pointer;
+          .track-container {
+            background-color: #000;
+            border: 1px solid hsla(0, 0%, 100%, 0.9);
+            border-radius: 0;
+            box-sizing: border-box;
+            color: #fff;
+            display: inline-block;
+            font-size: 1.25rem;
+            font-weight: 500;
+            height: 25px;
+            letter-spacing: 1px;
+            padding-left: 10px;
+            padding-right: 50px;
+            position: relative;
+
+            &:hover {
+              background-color: hsla(0, 0%, 100%, 0.322);
+              cursor: pointer;
+              outline: none;
+            }
+            .arrow {
+              border-color: #fff transparent transparent;
+              border-style: solid;
+              border-width: 5px 5px 0;
+              height: 0;
+              position: absolute;
+              right: 10px;
+              top: 44%;
+              width: 0;
+            }
+          }
+
+          .subgenres-list {
+            box-sizing: border-box;
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.9);
+            border: 1px solid hsla(0, 0%, 100%, 0.15);
+            left: 0;
+            top: 100%;
+            width: 425px;
+            height: fit-content;
+            z-index: 3 !important;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 1px 0;
+            margin: 0;
+            .subgenre-item {
+              width: calc(100% / 3);
+              list-style-type: none;
+              display: flex;
+              align-items: center;
+              padding: 5px 0;
+              a {
+                padding: 1px 20px 1px 10px;
+                width: 100%;
+
+                &:hover {
+                  cursor: pointer;
+                  text-decoration: underline;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.sub-header.scrolled {
+    background-color: rgba(0, 0, 0, 0.6) !important;
+  backdrop-filter: blur(10px);
+}

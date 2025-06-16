@@ -1,0 +1,54 @@
+.upload-video-box {
+    width: 100%;
+
+    .upload-video-dropzone {
+        width: 100%;
+        aspect-ratio: 16/9 !important;
+        background-color: #181732; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .upload-video-preview {
+            flex-grow: 1;
+            height: 100% !important;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+    
+            .video-preview {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+        }
+    }
+
+    .upload-video-tag {
+        display: flex;
+        justify-content: flex-start;
+        margin-top: 25px;
+        padding-left: 30px;
+
+
+        .upload-video-label-button {
+            width: fit-content;
+            height: 45px !important;
+            background-color: #2281FC;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 15px;
+            border-radius: 5px;
+            margin-right: 20px;
+        }
+
+        .description-upload-video {
+            width: 110px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #849FB3;
+        }
+    }
+}

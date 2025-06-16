@@ -1,0 +1,48 @@
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+
+  z-index: 100000 !important;
+}
+
+.loading-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  background-color: #27184f !important;
+  /* transform: translateY(68px); */
+}
+
+.footer {
+  width: 100%;
+  background-color: #000;
+}
+/* .portal-app {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  width: 100vw;
+  height: 100vh;
+} */

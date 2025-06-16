@@ -1,0 +1,108 @@
+.movie-title-card {
+  width: 100%;
+  border-radius: 0.25em;
+  overflow: hidden;
+  aspect-ratio: 240 / 325;
+  background-color: #141414;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  .image-wrapper {
+    width: 100%;
+    position: relative;
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-top-left-radius: 0.25em;
+      border-top-right-radius: 0.25em;
+    }
+
+    button {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: inherit;
+      border: 1.5px solid white;
+      border-radius: 50%;
+      opacity: 0;
+      transition: opacity 0.3s;
+
+      svg path {
+        fill: white;
+      }
+    }
+  }
+  .movie-meta-data {
+    flex-grow: 1;
+
+    .general-info {
+      width: 100%;
+      padding: 1em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      .maturity-rating {
+        display: flex;
+        gap: 10px;
+
+        .maturity-number {
+          border: 1px solid hsla(0, 0%, 100%, 0.4);
+          padding: 0 0.4em;
+        }
+      }
+
+      .player-feature-badge {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid hsla(0, 0%, 100%, 0.4);
+        border-radius: 3px;
+        color: hsla(0, 0%, 100%, 0.9);
+        font-size: 0.7em;
+        padding: 0 0.5em;
+      }
+      .controller {
+        flex-grow: 1;
+        display: flex;
+        justify-content: flex-end;
+        .add-to-wish-list-btn {
+          background-color: rgba(42, 42, 42, 0.6);
+          padding: 7px;
+          border: 1.5px solid hsla(0, 0%, 100%, 0.5);
+          box-sizing: border-box;
+          aspect-ratio: 1/1;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          &:hover {
+            border: 1.5px solid rgba(255, 255, 255, 0.7) !important;
+            background-color: rgba(255, 255, 255, 0.1) !important;
+          }
+          svg {
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+    }
+    .movie-description {
+      padding: 0 1em 1em;
+      color: #d2d2d2;
+      font-size: 14px;
+    }
+  }
+  &:hover {
+    button.play-movie-btn {
+      opacity: 1 !important;
+    }
+  }
+}

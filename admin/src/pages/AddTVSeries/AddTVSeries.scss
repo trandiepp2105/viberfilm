@@ -1,0 +1,174 @@
+.main-content-add-tv-series {
+    margin-top: 60px;
+    max-width: 100%;
+
+    .cancel-button-container {
+        width: 100%;
+        height: 50px;
+        margin: 10px 15px;
+        .cancel-button {
+            width: 50px;
+            height: 50px;
+            background-color: transparent;
+            cursor: pointer;
+            .cancel-button-img {
+                width: 30px;
+            }
+        }
+    }
+
+    .add-tv-series-form {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        gap: 100px;
+        padding-left: 90px;
+        color: #414141;
+        .form-column {
+            width: 470px;
+            height: 565px;
+            overflow: auto;
+            padding-right: 50px;
+        }
+        .form-column::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .form-column::-webkit-scrollbar-track {
+            background-color: white;
+        }
+
+        .form-column::-webkit-scrollbar-thumb {
+            background-color: #414141;
+            border-radius: 10px;
+        }
+
+        textarea {
+            height: 100px;
+            padding: 10px;
+            font-size: 15px;
+            border: none;
+            border-bottom: 1px solid black;
+            font-family: 'Roboto', sans-serif;
+            padding: 10px 20px;
+        }
+        textarea:focus {
+            outline: none;
+            border-bottom: 2px solid #087D95;
+        }
+        input {
+            height: 50px;
+            padding: 10px;
+            font-size: 15px;
+            text-align: right;
+            border: none;
+            border-bottom: 1px solid black;
+        }
+        input:focus {
+            text-align: left;
+            outline: none;
+            border-bottom: 2px solid #087D95;
+        }
+
+        .text-box {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            p {
+                margin-bottom: 5px;
+                margin-right: auto;
+            }
+            .text-input {
+                margin-left: auto;
+                width: 400px;
+            }
+        }
+        .number-episode-release-year-area {
+            display: flex;
+            justify-content: space-between;
+            .mini-text-box {
+                width: 180px;
+                margin-bottom: 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                p {
+                    margin-bottom: 5px;
+                    margin-right: auto;
+                }
+                .mini-text-input {
+                    width: 160px;
+                    height: 50px;
+                }
+            }
+            
+        }
+        .big-thumbnail-area {
+            display: flex;
+            justify-content: flex-end;
+            .thumbnail-label {
+                width: 400px;
+                aspect-ratio: 16/9;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                background-color: rgba(25, 25, 50, 0.7);
+
+                .big-thumbnail-img {
+                    max-width: 400px;
+                    max-height: calc(400px * 9 / 16);
+                    width: 400px;
+                    height: calc(400px * 9 / 16);
+                    object-fit: contain;
+                }
+
+                .thumnbnail-upload-description {
+                    position: absolute;
+                    bottom: 5px;
+                    right: 15px;
+                    color: #e4e4e4;
+                }
+
+                .plus-box {
+                    width: 50px;
+                    height: 50px;
+                    position: relative;
+                    &:before, &:after {
+                        position: absolute;
+                        content: '';
+                        width: 10px;
+                        height: 50px;
+                        background-color: #d9d9d9;
+                        top: 0;
+                        left: 0;
+                        transform: translate(-50%, -50%);
+                        border-radius: 5px;
+                    }
+                    &:before {
+                        transform: translate(-50%, -50%) rotate(90deg);
+                        top: 50%;
+                        left: 50%;  
+                    }
+                    &:after {
+                        top: 50%;
+                        left: 50%;  
+                    }
+                }
+            }     
+        }
+        .column2 {
+            .submit-form-btn {
+                width: 90px;
+                height: 40px;
+                border-radius: 10px;
+                background-color: #0BD955;
+                color: white;
+                font-size: 15px;
+                margin-left: 330px;
+                margin-top: 20px;
+            }
+        }
+    }
+}

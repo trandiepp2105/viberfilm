@@ -1,0 +1,76 @@
+.video-option-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 75vw;
+    cursor: pointer;
+    color: black;
+    margin-bottom: 10px;
+    height: 90px;
+    justify-content: space-between;
+
+    .infor-box {
+        display: flex;
+        gap: 10px;
+
+        .icon-infor-video {
+            width: 20px;
+        }
+    }
+
+    .video-thumbnail {
+        width: 160px;
+        height: 90px;
+        padding-left: 20px;
+        .poster {
+            height: 100%;
+        }
+    }
+
+    .video-infor-container {
+        width: 200px !important;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .name-video {
+            font-size: 18px;
+            // padding-left: 20px;
+        }
+
+        .date-upload-video {
+            font-size: 12px;
+            // padding-left: 20px;
+        }
+    } 
+
+    .action-btn {
+        width: 30px;
+        height: 30px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .action-icon {
+            position: relative;
+        }
+    }
+
+    .btn-edit {
+        background-color: #C2FFC5;
+        border: 1px solid #0BD955;
+    }
+    
+    .btn-delete {
+        background-color: #FBC4C4;
+        border: 1px solid #FF2323;
+    }
+
+
+}
+
+
+
+
+
+

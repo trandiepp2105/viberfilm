@@ -1,0 +1,403 @@
+.movie-detail-header {
+  position: relative;
+  width: 100%;
+  margin-top: 68px;
+  min-height: 42.86vw; // Chiều cao tối thiểu bằng chiều cao background image (21:9 ratio)
+  color: #fff;
+  display: flex;
+  align-items: flex-end;
+  font-family: inherit;
+  padding: 0 4%; // Padding 2 bên mỗi bên 4%
+  box-sizing: border-box;
+  background-color: #181818; // Màu nền cho toàn bộ component
+  
+  // Background image với tỷ lệ cố định
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 4%; // Bắt đầu từ 4% thay vì 0
+    right: 4%; // Kết thúc ở 4% từ bên phải
+    width: auto; // Để width tự động tính toán
+    height: 0;
+    padding-bottom: calc(42.86vw * 0.92); // 42.86% * (100% - 8%) để compensate cho padding (21:9 ratio)
+    background-image: var(--bg-image);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+  }
+  
+  // Đổ bóng từ dưới hình ảnh xuống màu #181818
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: calc(42.86vw + 80px); // Cao hơn hình một chút để tạo fade
+    background: 
+      linear-gradient(90deg, rgba(0,0,0,0.3) 0%, transparent 4%, transparent 96%, rgba(0,0,0,0.3) 100%), /* fade 2 bên */
+      linear-gradient(to bottom, 
+        transparent 0%, 
+        transparent 60%, 
+        rgba(24,24,24,0.1) 70%,
+        rgba(24,24,24,0.3) 80%,
+        rgba(24,24,24,0.6) 90%,
+        #181818 100%
+      ); /* fade từ trong suốt xuống màu #181818 */
+    z-index: 1.5;
+    pointer-events: none; // Không cản trở tương tác
+  }
+  
+  &__overlay {
+    // margin-top: 68px; // Để overlay nằm dưới header
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    min-height: 42.86vw; // Chiều cao tối thiểu bằng chiều cao background image (21:9 ratio)
+    max-height: 42.86vw; // Giới hạn chiều cao ban đầu
+    overflow: hidden; // Ẩn phần vượt quá
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; // Hiển thị từ trên xuống, ẩn phần dưới
+    transition: max-height 0.5s ease-in-out; // Animation mượt
+    /* 3 hướng: trái qua, phải qua, dưới lên - được điều chỉnh để hòa hợp với padding */
+    background:
+      linear-gradient(90deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.15) 20%, rgba(0, 0, 0, 0.01) 50%, rgba(0, 0, 0, 0) 100%), /* trái qua phải, mượt hơn */
+      linear-gradient(-90deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.15) 20%, rgba(0, 0, 0, 0.05) 100%), /* phải qua trái, mượt hơn */
+      linear-gradient(0deg, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.05) 50%, rgba(0, 0, 0, 0) 100%);   /* dưới lên */
+    
+    // Khi expanded, cho phép chiều cao tự động
+    &.expanded {
+      max-height: none;
+      height: auto;
+      // Giữ nguyên background gradient, chỉ thêm màu nền cho phần extended
+      &::after {
+        content: '';
+        position: absolute;
+        top: 42.86vw; // Bắt đầu từ sau phần hình ảnh
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #181818; // Màu nền cho phần mở rộng
+        z-index: -1; // Đặt dưới content
+      }
+    }
+  }
+
+  &__content {
+    padding: 48px 32px 32px 32px; // Giảm padding trái phải vì đã có padding ở container
+    width: 100%;
+    max-width: calc(100% - 250px);
+    flex-shrink: 0; // Không cho phép content bị co lại
+    margin-top: auto; // Đẩy content xuống dưới trong overlay
+  }
+
+  &__banner {
+    position: absolute;
+    top: 21.43vw; // Đặt ở giữa theo tỷ lệ 21:9 (42.86vw / 2)
+    right: 32px; // Điều chỉnh để phù hợp với padding
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    z-index: 15; // Đảm bảo banner luôn ở trên cùng, cao hơn more-details
+    
+    &:hover {
+      .movie-poster {
+        filter: brightness(0.6);
+      }
+    }
+    
+    img {
+      width: 200px;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      transition: filter 0.3s ease;
+    }
+  }
+}
+
+// Banner play overlay
+.banner-play-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  border-radius: 8px;
+}
+
+.play-button {
+  width: 60px;
+  height: 60px;
+  background: rgba(220, 53, 69, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: rgba(220, 53, 69, 1);
+    transform: scale(1.1);
+  }
+  
+  svg {
+    margin-left: 3px; // Slight offset to center the play icon visually
+  }
+}
+
+.movie-title {
+  font-size: 2.6rem;
+  font-weight: bold;
+  margin-bottom: 12px;
+  line-height: 1.2;
+  max-width: 70%; // Tăng max-width để phù hợp với padding
+}
+
+.movie-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.age-badge {
+  background: #fff;
+  color: #dc3545;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+.divider {
+  color: #fff;
+  opacity: 0.7;
+}
+
+.meta-link {
+  color: #fff;
+  text-decoration: underline;
+  cursor: pointer;
+  opacity: 0.85;
+}
+
+.movie-rating {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+  font-size: 1.1rem;
+}
+
+.stars {
+  color: gold;
+  font-size: 1.3rem;
+}
+
+.average-rating {
+  opacity: 0.9;
+}
+
+.movie-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.btn-watch {
+  background: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 12px 28px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  position: relative;
+  
+  .watch-text {
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 30px;
+      height: 2px;
+      background: #dc3545;
+      border-radius: 1px;
+    }
+  }
+}
+.btn-watch:hover {
+  background: #b52a37;
+  
+  .watch-text::after {
+    background: #b52a37;
+  }
+}
+
+.btn-icon {
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.btn-icon:hover {
+  background: #dc3545;
+}
+
+.movie-description {
+  margin-bottom: 18px;
+  font-size: 0.85rem;
+
+  line-height: 1.5;
+  max-width: 700px;
+  opacity: 0.97;
+}
+
+.movie-extra {
+  font-size: 0.98rem;
+  opacity: 0.85;
+  margin-bottom: 4px;
+}
+
+.movie-detail-columns {
+  display: flex;
+  gap: 48px;
+  margin-top: 12px;
+  align-items: flex-start;
+}
+
+.movie-detail-col-left {
+  flex: 4;
+  min-width: 0;
+  text-align: justify;
+}
+
+.movie-detail-col-right {
+  flex: 1.2;
+  min-width: 220px;
+  font-size: 0.98rem;
+  opacity: 0.92;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.copyright {
+  margin-top: 18px;
+  font-size: 0.93rem;
+  opacity: 0.7;
+}
+
+// More Details Section
+.more-details-section {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  z-index: 10;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 24px;
+  margin-top: auto; // Đảm bảo section này luôn ở cuối
+}
+
+.fade-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,0.3) 30%,
+    rgba(0,0,0,0.7) 70%,
+    rgba(0,0,0,0.9) 100%
+  );
+  pointer-events: none;
+}
+
+.more-details-btn {
+  position: relative;
+  z-index: 11;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 12px 32px;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 900px) {
+  .movie-detail-header {
+    padding: 0 2%; // Giảm padding trên mobile
+    
+    &__banner {
+      right: 16px; // Điều chỉnh vị trí banner trên mobile
+    }
+    
+    &__content {
+      padding: 32px 16px 24px 16px; // Giảm padding trên mobile
+    }
+  }
+  
+  .movie-detail-columns {
+    flex-direction: column;
+    gap: 18px;
+  }
+  .movie-detail-col-right {
+    margin-top: 0;
+  }
+  
+  .movie-title {
+    max-width: 85%; // Tăng max-width trên mobile
+  }
+}
