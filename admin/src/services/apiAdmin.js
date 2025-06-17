@@ -2,7 +2,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 const apiAdmin = axios.create({
-  baseURL: "http://127.0.0.1:8000/api/v1",
+  baseURL: process.env.REACT_APP_API_BASE_URL || "http://127.0.0.1:8000/api/v1",
   timeout: 10000,
   withCredentials: true,
   headers: {

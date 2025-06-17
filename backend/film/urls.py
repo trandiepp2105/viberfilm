@@ -9,6 +9,7 @@ urlpatterns = [
     path('contents/', ContentListAPIView.as_view(), name='content_list'),
     path('contents/<slug:slug>/', ContentDetailAPIView.as_view(), name='content_detail'),
     path('movies/', MovieListCreateAPIView.as_view(), name='movie_create'),
+    path('series/', SeriesListCreateAPIView.as_view(), name='series_list'),
     path('movies/recently-updated/', MovieRecentlyUpdatedAPIView.as_view(), name='movie_recently_updated'),
     path('movies/similar/', SimilarMoviesAPIView.as_view(), name='similar_movies'),
     path('movies/<slug:slug>/', MovieRetrieveUpdateAPIView.as_view(), name='movie_detail'),

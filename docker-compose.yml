@@ -38,8 +38,10 @@ services:
     ports:
       - "8000:8000"
     depends_on:
-      - db
-      - redis
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
     env_file:
       - ./.env
     networks:
@@ -62,7 +64,18 @@ services:
     #   MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
       - db_data:/var/lib/mysql
+      - ./initial_data:/docker-entrypoint-initdb.d
     restart: always
+    healthcheck:
+      # Kiểm tra sự tồn tại của file cờ hiệu
+      test: ["CMD-SHELL", "test -f /var/lib/mysql/initial_data_imported.flag"]
+      interval: 5s # Kiểm tra mỗi 5 giây
+      timeout: 2s # Timeout cho mỗi lần kiểm tra
+      retries:
+        72 # Thử lại tối đa 72 lần (tương đương 6 phút chờ: 72 * 5s)
+        # Điều chỉnh số lần thử lại (retries) và start_period dựa trên
+        # kích thước file SQL của bạn và thời gian import dự kiến.
+      start_period: 60s # Chờ 60 giây sau khi container khởi động rồi mới bắt đầu
 
     networks:
       - localnet
@@ -74,21 +87,27 @@ services:
       - "6379:6379"
     volumes:
       - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 2s
+      retries: 5
     networks:
       - localnet
-  elasticsearch:
-    container_name: elasticsearch
-    image: elasticsearch:8.0.0
-    environment:
-      - discovery.type=single-node
-      - xpack.security.enabled=true
-      - ELASTICSEARCH_HOST=${ELASTICSEARCH_HOST}
-      - ELASTIC_USERNAME=${ELASTIC_USERNAME}
-      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
-    ports:
-      - "9200:9200"
-    networks:
-      - localnet
+  # elasticsearch:
+  #   container_name: elasticsearch
+  #   image: elasticsearch:8.0.0
+  #   environment:
+  #     - discovery.type=single-node
+  #     - xpack.security.enabled=false
+  #     - ES_JAVA_OPTS=-Xms512m -Xmx512m
+  #     - bootstrap.memory_lock=true
+  #   env_file:
+  #     - ./.env
+  #   ports:
+  #     - "9200:9200"
+  #   networks:
+  #     - localnet
 volumes:
   redis-data:
   db_data:

@@ -1,7 +1,7 @@
 // Cấu hình API cho ứng dụng xem phim miễn phí
 export const API_CONFIG = {
   // Base URL cho backend API
-  BASE_URL: process.env.REACT_APP_API_URL || "http://127.0.0.1:8000/api/v1",
+  BASE_URL: process.env.REACT_APP_API_URL,
   
   // Timeout cho requests (ms)
   TIMEOUT: 15000,
