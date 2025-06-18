@@ -249,10 +249,3 @@ _(Create a `LICENSE` file in your root directory with the MIT license text if yo
 
 **Author:** Van Diep Tran
 **GitHub:** https://github.com/trandiepp2105
-
----
-
-**Author:** Van Diep Tran  
-**GitHub:** https://github.com/trandiepp2105
-
-**Note:** Remember to keep your `.env` file secure and never commit it to version control. Use strong passwords for production deployment.
