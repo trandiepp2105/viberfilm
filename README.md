@@ -1,5 +1,7 @@
 # ViberFilm - Video Streaming Platform (Django & React)
 
+![ViberFilm App Preview](./assets/image1.png)
+
 ViberFilm is a simple and lightweight full-stack video streaming platform that allows users to browse and watch movies and TV series for free. Built with Django REST Framework and ReactJS, it provides basic but essential features such as trending movies, detailed film info, episode lists, and video streaming using HLS (HTTP Live Streaming). An admin panel is also provided to manage content easily. This application is deployed using docker and nginx.
 
 **Live Application URL:** [Coming Soon]
