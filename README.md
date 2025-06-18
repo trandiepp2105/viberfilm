@@ -7,25 +7,17 @@ _(The application will be deployed with frontend on port 3000, admin panel on po
 
 ## ✨ Features
 
-**User Management:**
-
-- **User Registration:** New users can create an account with email verification.
-- **User Login/Logout:** Secure JWT-based authentication for registered users.
-- **User Profiles:** Users can manage their personal information and preferences.
-- **Watch History:** Track viewing progress and maintain watch history.
-
 **Content & Media:**
 
 - **Movie & TV Series Catalog:** Browse extensive collection of movies and TV shows.
 - **Advanced Search:** Find specific content using Elasticsearch-powered search functionality.
-- **Content Details:** View detailed information including cast, crew, ratings, and synopsis.
+- **Content Details:** View detailed information including cast, crew, views, and synopsis.
 - **Season & Episode Management:** Organized TV series with seasons and episodes.
 - **Genre & Category Filtering:** Browse content by genres, release year, and other criteria.
 
 **Video Streaming:**
 
 - **HLS Video Streaming:** Adaptive bitrate streaming for optimal viewing experience.
-- **Multiple Quality Options:** Support for different video quality levels (480p, 720p, 1080p).
 - **Video Player Controls:** Full-featured video player with seek, volume, and fullscreen controls.
 - **Resume Playback:** Continue watching from where you left off.
 
@@ -33,9 +25,7 @@ _(The application will be deployed with frontend on port 3000, admin panel on po
 
 - **Content Upload:** Upload and manage video files with automatic processing.
 - **Metadata Management:** Add and edit movie/series information, cast, and crew details.
-- **User Management:** Admin tools for managing user accounts and permissions.
 - **Analytics Dashboard:** View platform statistics and user engagement metrics.
-- **Content Moderation:** Review and approve user-generated content and comments.
 
 **Additional Features:**
 
