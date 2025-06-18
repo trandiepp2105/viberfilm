@@ -446,6 +446,76 @@ class MovieListCreateAPIView(APIView):
         except Exception as e:
             return Response({"error": f"Internal Server Error: {str(e)}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR) 
 
+class SeriesListCreateAPIView(APIView):
+    parser_classes = (MultiPartParser, FormParser)
+    
+    def get_permissions(self):
+        """
+        Public read access, admin-only write access
+        """
+        if self.request.method == 'GET':
+            return [AllowAny()]
+        return [IsAdminUser(), IsAuthenticated()]
+
+    def get(self, request):
+        try:
+            queryset = Series.objects.select_related('content').all()
+            
+            # Apply search filtering
+            search = request.query_params.get('search')
+            if search:
+                queryset = queryset.filter(
+                    Q(content__title__icontains=search) |
+                    Q(content__description__icontains=search)
+                )
+            
+            # Apply genre filtering
+            genre = request.query_params.get('genre')
+            if genre:
+                queryset = queryset.filter(content__content_genres__genre__id=genre)
+            
+            # Apply ordering
+            ordering = request.query_params.get('ordering')
+            if ordering:
+                if ordering.startswith('-'):
+                    field = ordering[1:]
+                    queryset = queryset.order_by(f'-content__{field}' if field in ['views', 'rating', 'release_date', 'created_at', 'updated_at'] else ordering)
+                else:
+                    queryset = queryset.order_by(f'content__{ordering}' if ordering in ['views', 'rating', 'release_date', 'created_at', 'updated_at'] else ordering)
+            
+            # Count total results for pagination
+            total_count = queryset.count()
+            
+            # Apply offset and limit for pagination
+            offset = request.query_params.get('offset', 0)
+            limit = request.query_params.get('limit')
+            
+            try:
+                offset = int(offset)
+                if limit:
+                    limit = int(limit)
+                    queryset = queryset[offset:offset+limit]
+                else:
+                    queryset = queryset[offset:]
+            except (ValueError, TypeError):
+                pass
+            
+            # Get the actual results
+            results = list(queryset)
+            
+            # Prepare response data
+            serializer = SeriesSerializer(results, many=True, context={'request': request})
+            
+            # Always return paginated response format for consistency
+            response_data = {
+                'count': total_count,
+                'results': serializer.data
+            }
+            
+            return Response(response_data, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({"error": f"Internal Server Error: {str(e)}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 class SeasonCreateAPIView(APIView):
     parser_classes = (MultiPartParser, FormParser)
     permission_classes = [AllowAny]

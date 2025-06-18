@@ -42,12 +42,7 @@ DEBUG = os.environ.get('DEBUG', 'True').lower() == 'true'
 # For production, set ALLOWED_HOSTS properly
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',') if os.environ.get('ALLOWED_HOSTS') else ['localhost', '127.0.0.1']
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-    "https://127.0.0.1:3000",
-    "https://localhost:3000",
-]
+CORS_ALLOWED_ORIGINS = os.environ.get('CORS_ALLOWED_ORIGINS', 'http://localhost:3000').split(',') if os.environ.get('CORS_ALLOWED_ORIGINS') else ['http://localhost:3000']
 
 # Enable credentials for CORS requests
 CORS_ALLOW_CREDENTIALS = True
@@ -89,7 +84,7 @@ SESSION_COOKIE_SAMESITE = "Lax"
 SESSION_COOKIE_SECURE = not DEBUG  # True for production (HTTPS), False for development
 
 # 🔹 HTTPS/Security Settings
-SECURE_SSL_REDIRECT = not DEBUG  # Redirect HTTP to HTTPS in production
+SECURE_SSL_REDIRECT = False  # Disabled for development
 SECURE_HSTS_SECONDS = 31536000 if not DEBUG else 0  # 1 year for production
 SECURE_HSTS_INCLUDE_SUBDOMAINS = not DEBUG
 SECURE_HSTS_PRELOAD = not DEBUG
@@ -122,8 +117,8 @@ INSTALLED_APPS = [
     # 'comment',  # Removed comment app
     'film',
     'django_extensions',
-    'search',
-    'elasticsearch_dsl',
+    # 'search',  # Temporarily disabled
+    # 'elasticsearch_dsl',  # Temporarily disabled
 ]
 
 MIDDLEWARE = [
@@ -163,23 +158,22 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'netflix_db',
-        'USER': 'netflix_813',
-        'PASSWORD': '123456',
-        'HOST': 'mysql',  # Kết nối qua localhost
-        # 'HOST': '127.0.0.1',  # Kết nối qua localhost\
-        'PORT': '3306',       # Cổng ánh xạ từ Docker
+        'NAME': os.getenv('DB_NAME', 'viberfilm_db'),
+        'USER': os.getenv('DB_USER', 'viberfilm_user'),
+        'PASSWORD': os.getenv('DB_PASSWORD', 'viberfilm_password'),
+        'HOST': os.getenv('DB_HOST', 'db'),
+        'PORT': os.getenv('DB_PORT', '3306'),
     }
 }
 
-ELASTICSEARCH_DSL = {
-    'default': {
-        'hosts': [{'host': 'elasticsearch', 'port': 9200}],
-        'http_auth': ('elastic', '123456'),
-        'use_ssl': False,
-        'verify_certs': False,
-    }
-}
+# ELASTICSEARCH_DSL = {
+#     'default': {
+#         'hosts': [{'host': 'elasticsearch', 'port': 9200}],
+#         'http_auth': ('elastic', '123456'),
+#         'use_ssl': False,
+#         'verify_certs': False,
+#     }
+# }
 
 # Password validation - keeping for admin panel
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
